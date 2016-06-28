@@ -60,7 +60,7 @@ class Combine extends Command
                 $csv = (new CSV($csv))->process();
                 $rows = $this->grabRows($csv);
                 $this->heading = $rows->shift()->flatten();
-                return var_dump($rows->all());
+                return $rows->all();
             })
             ->prepend($this->heading)
             ->flatten()
