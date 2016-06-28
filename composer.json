@@ -3,7 +3,7 @@
     "description": "CLI tool to combine CSV files, with extra column added to show origniation csv",
     "type": "library",
     "require": {
-        "symfony/console": "^3.1",
+        "symfony/console": "^2.8.7",
         "tightenco/collect": "^5.2"
     },
     "license": "MIT",
