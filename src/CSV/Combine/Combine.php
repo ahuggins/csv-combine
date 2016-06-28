@@ -60,7 +60,7 @@ class Combine extends Command
                 $csv = (new CSV($csv))->process();
                 $rows = $this->grabRows($csv);
                 $this->heading = $rows->shift()->flatten();
-                return $rows->all();
+                return var_dump($rows->all());
             })
             ->prepend($this->heading)
             ->flatten()
@@ -88,6 +88,7 @@ class Combine extends Command
      */
     public function writeFile($contents)
     {
+        // file_put_contents('combined.csv', $contents);
         $file = fopen('php://stdout', 'w');
         fwrite($file, $contents);
         fclose($file);

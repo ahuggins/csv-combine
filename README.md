@@ -2,9 +2,7 @@
 
 ### Usage
 
-If installed correctly, you may need to source your Terminal window. (Create a new tab or close and reopen Terminal or iTerm);
 
-Now you should be able to access the tool like this:
 
 `$ php combiner`
 
