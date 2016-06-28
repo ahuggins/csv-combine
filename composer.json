@@ -1,0 +1,22 @@
+{
+    "name": "ahuggins/csv-combine",
+    "description": "CLI tool to combine CSV files, with extra column added to show origniation csv",
+    "type": "library",
+    "require": {
+        "symfony/console": "^3.1",
+        "tightenco/collect": "^5.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew huggins",
+            "email": "andrewhuggins@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "CSV\\Combine\\": "src/"
+        }
+    }
+}
