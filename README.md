@@ -2,7 +2,11 @@
 
 ### Usage
 
+#### Installation
 
+`git clone git@github.com:ahuggins/csv-combine.git`
+
+Then add the csv files to the folder you cloned to.
 
 `$ php combiner`
 
