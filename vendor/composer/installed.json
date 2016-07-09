@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "f9bc5072e11b2ad15ea55e0f4171cc870dc33a1d"
+            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f9bc5072e11b2ad15ea55e0f4171cc870dc33a1d",
-            "reference": "f9bc5072e11b2ad15ea55e0f4171cc870dc33a1d",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8a6bdec191138e01c92ae026e5aacb7b3e66267d",
+            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-06-07 08:38:42",
+        "time": "2016-06-29 14:58:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -61,67 +61,18 @@
         ]
     },
     {
-        "name": "tightenco/collect",
-        "version": "v5.2.38",
-        "version_normalized": "5.2.38.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tightenco/collect.git",
-            "reference": "fded841989fcbad4532173d32e7dfaceed99f98c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tightenco/collect/zipball/fded841989fcbad4532173d32e7dfaceed99f98c",
-            "reference": "fded841989fcbad4532173d32e7dfaceed99f98c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.4",
-            "phpunit/phpunit": "~4.1"
-        },
-        "time": "2016-06-09 21:53:44",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/Illuminate/Support/helpers.php"
-            ],
-            "psr-4": {
-                "Illuminate\\": "src/Illuminate"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com"
-            }
-        ],
-        "description": "Collect - Illuminate Collections as a separate package.",
-        "keywords": [
-            "collection",
-            "laravel"
-        ]
-    },
-    {
         "name": "symfony/console",
         "version": "2.8.x-dev",
         "version_normalized": "2.8.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/console.git",
-            "reference": "35c267ab3999f8d2c5e77ef6d8a8e9aa370584a8"
+            "reference": "139e3be2f16f19babbebcaaed0f6771d98bc9307"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/console/zipball/35c267ab3999f8d2c5e77ef6d8a8e9aa370584a8",
-            "reference": "35c267ab3999f8d2c5e77ef6d8a8e9aa370584a8",
+            "url": "https://api.github.com/repos/symfony/console/zipball/139e3be2f16f19babbebcaaed0f6771d98bc9307",
+            "reference": "139e3be2f16f19babbebcaaed0f6771d98bc9307",
             "shasum": ""
         },
         "require": {
@@ -138,7 +89,7 @@
             "symfony/event-dispatcher": "",
             "symfony/process": ""
         },
-        "time": "2016-06-21 05:36:02",
+        "time": "2016-06-30 18:17:12",
         "type": "library",
         "extra": {
             "branch-alias": {

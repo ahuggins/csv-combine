@@ -2,31 +2,40 @@
 
 namespace CSV\Combine;
 
-use LimitIterator;
 use SplFileObject;
 
 class ProcessCSV
 {
     protected $filename;
 
-    protected $contents = [];
-
     protected $file;
 
-    protected $start_with_row = 0;
+    protected $output;
 
-    protected $i = 0;
+    public function __construct(SplFileObject $output = null)
+    {
+        $this->output = $output ?: new SplFileObject('php://stdout', 'w');
+    }
     
     /**
-     * set the new filename and load the file
+     * Set the File property, set the flags to skip empty lines,
+     * skip the heading row. Set the filename.
      * @param  string $filename filename of csv to load
      * @return ProcessCSV        For chaining calls
      */
     public function load(string $filename)
     {
         $this->file = new SplFileObject($filename);
+        $this->file->setFlags(
+            SplFileObject::READ_CSV |
+            SplFileObject::READ_AHEAD |
+            SplFileObject::SKIP_EMPTY |
+            SplFileObject::DROP_NEW_LINE
+        );
 
-        $this->removeHeadingIfNotFirstFileProcessed($filename);
+        $this->skipHeadingIfNotFirstFileProcessed();
+
+        $this->filename = $filename;
 
         return $this;
     }
@@ -36,10 +45,8 @@ class ProcessCSV
      */
     public function process()
     {
-        foreach (new LimitIterator($this->file, $this->start_with_row) as $row) {
-            if (! empty($row)) {
-                $this->write($row);
-            }
+        while ($row = $this->file->fgetcsv()) {
+            $this->write($row);
         }
     }
 
@@ -47,37 +54,32 @@ class ProcessCSV
      * write row to stdout
      * @param  array  $row The array represenation of a row
      */
-    protected function write($row)
+    protected function write(array $row)
     {
-        (new SplFileObject('php://stdout'))->fputcsv(
-            [$row, $this->filename()]
+        $this->output->fputcsv(
+            [$row[0], $row[1], $this->filename()]
         );
-        $this->i++;
     }
 
     /**
      * If the content is empty that means we are on the heading line,
      * return the heading,
-     * @param  int    $i the row number
      * @return string    heading or the filename
      */
     protected function filename()
     {
-        return $this->i === 0 ? 'filename' : $this->filename;
+        return empty($this->filename) ? 'filename' : $this->filename;
     }
 
-
     /**
-     * Remove the heading row if not first file processed
+     * Skip the heading row if not first file processed
      * so we do not have duplicate heading row
-     * @param  string $filename The filename of the csv
      */
-    protected function removeHeadingIfNotFirstFileProcessed(string $filename)
+    protected function skipHeadingIfNotFirstFileProcessed()
     {
         if (! empty($this->filename)) {
-            $this->start_with_row = 1;
+            $this->file->current();
+            $this->file->next();
         }
-
-        $this->filename = $filename;
     }
 }

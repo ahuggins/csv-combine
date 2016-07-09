@@ -12,6 +12,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Combine extends Command
 {
+    protected $processor;
+
+    public function __construct(ProcessCSV $processor = null)
+    {
+        parent::__construct();
+        $this->processor = $processor ?: new ProcessCSV;
+    }
     /**
      * Setting up tool for Symfony Console Command
      */
@@ -25,8 +32,7 @@ class Combine extends Command
     /**
      * Required by Symfony Console Command
      * @param  InputInterface  $input
-     * @param  OutputInterface $output [description]
-     * @return [type]                  [description]
+     * @param  OutputInterface $output
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -40,23 +46,19 @@ class Combine extends Command
     /**
      * Take the names of the files passed to command and process them.
      * @param  array $csv_names list of the csv names to process
-     * @return string            Contents of the combined csv files
      */
-    public function processCsvFiles(array $csv_names)
+    protected function processCsvFiles(array $csv_names)
     {
-        $processor = new ProcessCSV;
-
         foreach ($csv_names as $csv) {
-            $processor->load($csv)->process();
+            $this->processor->load($csv)->process();
         }
     }
 
     /**
      * make sure the file exists
-     * @param  array $csv_names The csv filename
-     * @return boolean
+     * @param  array $csv_names An array of csv filenames
      */
-    public function checkIfFilesExist(array $csv_names)
+    protected function checkIfFilesExist(array $csv_names)
     {
         foreach ($csv_names as $csv) {
             if (! file_exists($csv)) {
