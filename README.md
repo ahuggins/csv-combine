@@ -1,5 +1,7 @@
 # CSV Combiner
 
+> Requires PHP7
+
 ### Usage
 
 #### Installation

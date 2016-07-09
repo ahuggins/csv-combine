@@ -14,7 +14,7 @@ class ProcessCSV
 
     public function __construct(SplFileObject $output = null)
     {
-        $this->output = $output ?: new SplFileObject('php://stdout', 'w');
+        $this->output = $output ?? new SplFileObject('php://stdout', 'w');
     }
     
     /**
@@ -68,7 +68,7 @@ class ProcessCSV
      */
     protected function filename()
     {
-        return empty($this->filename) ? 'filename' : $this->filename;
+        return $this->filename ?? 'filename';
     }
 
     /**

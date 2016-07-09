@@ -17,7 +17,7 @@ class Combine extends Command
     public function __construct(ProcessCSV $processor = null)
     {
         parent::__construct();
-        $this->processor = $processor ?: new ProcessCSV;
+        $this->processor = $processor ?? new ProcessCSV;
     }
     
     /**
