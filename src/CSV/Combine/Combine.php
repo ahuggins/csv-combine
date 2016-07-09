@@ -19,6 +19,7 @@ class Combine extends Command
         parent::__construct();
         $this->processor = $processor ?: new ProcessCSV;
     }
+    
     /**
      * Setting up tool for Symfony Console Command
      */
