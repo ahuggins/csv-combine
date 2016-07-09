@@ -16,6 +16,20 @@ class ProcessCSV
     protected $start_with_row = 0;
 
     protected $i = 0;
+    
+    /**
+     * set the new filename and load the file
+     * @param  string $filename filename of csv to load
+     * @return ProcessCSV        For chaining calls
+     */
+    public function load(string $filename)
+    {
+        $this->file = new SplFileObject($filename);
+
+        $this->removeHeadingIfNotFirstFileProcessed($filename);
+
+        return $this;
+    }
 
     /**
      * Loop over each row and pass to write().
@@ -33,7 +47,7 @@ class ProcessCSV
      * write row to stdout
      * @param  array  $row The array represenation of a row
      */
-    public function write($row)
+    protected function write($row)
     {
         (new SplFileObject('php://stdout'))->fputcsv(
             [$row, $this->filename()]
@@ -52,26 +66,13 @@ class ProcessCSV
         return $this->i === 0 ? 'filename' : $this->filename;
     }
 
-    /**
-     * set the new filename and load the file
-     * @param  string $filename filename of csv to load
-     * @return ProcessCSV        For chaining calls
-     */
-    public function load(string $filename)
-    {
-        $this->file = new SplFileObject($filename);
-
-        $this->removeHeadingIfNotFirstFileProcessed($filename);
-
-        return $this;
-    }
 
     /**
      * Remove the heading row if not first file processed
      * so we do not have duplicate heading row
      * @param  string $filename The filename of the csv
      */
-    public function removeHeadingIfNotFirstFileProcessed(string $filename)
+    protected function removeHeadingIfNotFirstFileProcessed(string $filename)
     {
         if (! empty($this->filename)) {
             $this->start_with_row = 1;
