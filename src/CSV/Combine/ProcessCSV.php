@@ -25,7 +25,7 @@ class ProcessCSV
      * write row to stdout
      * @param  array  $row The array represenation of a row
      */
-    public function write($row)
+    public function write(array $row)
     {
         (new SplFileObject('php://stdout'))->fputcsv(
             [$row[0], $row[1], $this->filename()]
