@@ -8,6 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
-    'Illuminate\\' => array($vendorDir . '/tightenco/collect/src/Illuminate'),
     'CSV\\Combine\\' => array($baseDir . '/src/CSV/Combine'),
 );

@@ -40,9 +40,8 @@ class Combine extends Command
     /**
      * Take the names of the files passed to command and process them.
      * @param  array $csv_names list of the csv names to process
-     * @return string            Contents of the combined csv files
      */
-    public function processCsvFiles(array $csv_names)
+    protected function processCsvFiles(array $csv_names)
     {
         $processor = new ProcessCSV;
 
@@ -54,9 +53,8 @@ class Combine extends Command
     /**
      * make sure the file exists
      * @param  array $csv_names The csv filename
-     * @return boolean
      */
-    public function checkIfFilesExist(array $csv_names)
+    protected function checkIfFilesExist(array $csv_names)
     {
         foreach ($csv_names as $csv) {
             if (! file_exists($csv)) {
